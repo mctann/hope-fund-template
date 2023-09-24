@@ -1,0 +1,150 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import FeatureList from "../components/FeatureList.astro";
+import Feature from "../components/Feature.astro";
+import News from "../components/News.astro";
+import Footer from "../components/Footer.astro";
+import Volunteer from "../components/Volunteer.astro";
+import Sponsor from "../components/Sponsor.astro";
+
+const navigation = [
+  {
+    name: "Vision and Mission",
+    isActive: false,
+    href: "",
+  },
+  {
+    name: "Donation",
+    isActive: false,
+    href: "",
+  },
+  {
+    name: "Sponsorship",
+    isActive: false,
+    href: "",
+  },
+  {
+    name: "Volunteer",
+    isActive: false,
+    href: "",
+  },
+  {
+    name: "News",
+    isActive: false,
+    href: "",
+  },
+  {
+    name: "Join us",
+    isActive: false,
+    href: "",
+  },
+];
+
+const featureList = [
+  {
+    icon: "donation-icon.svg",
+    title: "Donation",
+    description: "Create lasting impact, bring hope to those in need.",
+  },
+  {
+    icon: "volunteer-icon.svg",
+    title: "Volunteer",
+    description: "Join us, make a difference in your community.",
+  },
+  {
+    icon: "sponsor-icon.svg",
+    title: "Sponsor",
+    description: "Empower a child's future through monthly support",
+  },
+];
+
+const features = [
+  {
+    image: "vision.svg",
+    title: "Our Vision and Mission",
+    description:
+      "Our organization is dedicated to improving the lives of vulnerable children and creating sustainable change in communities. Through our programs and initiatives, we strive to provide access to education, healthcare, and opportunities for a better future.",
+    actionButton: "Learn More",
+  },
+  {
+    image: "donation.svg",
+    title: "Your Donation Matters",
+    description:
+      "Every donation, no matter the size, makes a difference. Your generous contribution will help us provide vital resources and support to those in need. Join us in making a lasting impact in the lives of children and communities.",
+    actionButton: "Donate Now",
+  },
+];
+
+const volunteer = {
+  title: "Volunteer with Us",
+  description:
+    "Join our dedicated team of volunteers and make a difference on the ground. Whether it's teaching, mentoring, or providing assistance in various projects, your time and skills can help transform lives. Together, we can create a brighter future.",
+  image: "volunteer.svg",
+  actionButton: "Become a volunteer",
+  contribution: [
+    {
+      text: "Projects",
+      value: "50++",
+    },
+    {
+      text: "Volunteers",
+      value: "200++",
+    },
+  ],
+};
+
+const sponsor = {
+  title: "Sponsor a Child, Change a Life",
+  description:
+    "By sponsoring a child, you can have a direct impact on their life. Your monthly donation will ensure they receive essentials like education, healthcare, and nutrition. Together, we can break the cycle of poverty and empower these children to reach their full potential.",
+  image: "sponsor.png",
+  actionButton: "Join Now",
+  secondaryButton: "Learn More"
+};
+
+const news = [
+  {
+    title: "Launching New Education Program to Empower Underserved Communities",
+    description:
+      "Through this program, we will provide quality education, access to resources, and mentorship to help these young minds unlock their full potential.",
+    banner: "news-1.png",
+  },
+  {
+    title: "Celebrating a Milestone in Our Clean Water Initiative",
+    description:
+      "Thanks to the generosity and support of our donors, we have successfully installed water purification systems in 20 remote villages, ensuring access to safe and clean drinking water for thousands of individuals.",
+    banner: "news-2.png",
+  },
+  {
+    title: "Recognition for Outstanding Community Service Efforts",
+    description:
+      "Our passionate volunteers, staff, and partners have worked tirelessly to make a positive impact in the lives of those in need.",
+    banner: "news-3.png",
+  },
+];
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <Navbar navigation={navigation} />
+    <Hero />
+    <FeatureList featureList={featureList} />
+    {
+      features?.map((x, index) => (
+        <Feature
+          index={index}
+          title={x.title}
+          image={x.image}
+          description={x.description}
+          actionButton={x.actionButton}
+        />
+      ))
+    }
+	  <Sponsor title={sponsor.title} image={sponsor.image} description={sponsor.description} actionButton={sponsor.actionButton} secondaryButton={sponsor.secondaryButton}/>
+    <Volunteer title={volunteer.title} image={volunteer.image} description={volunteer.description} contribution={volunteer.contribution} actionButton={volunteer.actionButton}/>
+    <News news={news} />
+    <Footer />
+  </main>
+</Layout>

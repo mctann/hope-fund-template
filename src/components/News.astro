@@ -1,0 +1,65 @@
+---
+interface News {
+  title: string;
+  description: string;
+  banner: string;
+}
+interface Props {
+  news: Array<News>;
+}
+
+const { news } = Astro.props;
+---
+
+<!-- Card Blog -->
+<div
+  class="max-w-[85rem] bg-white py-10 px-8 lg:px-16 lg:py-14 mx-auto"
+>
+  <!-- Title -->
+  <div class="max-w-2xl text-center mx-auto mb-10 lg:mb-14">
+    <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">
+      Our News
+    </h2>
+    <p class="mt-1 text-gray-600 dark:text-gray-400">
+      Stay informed and inspired with the latest updates from Hope Fund's
+      ongoing initiatives and the impact we're making in communities around the
+      world. Our news section is your gateway to stories of hope, progress, and
+      transformation.
+    </p>
+  </div>
+  <!-- End Title -->
+
+  <!-- Grid -->
+  <div class="grid sm:grid-cols-1 lg:grid-cols-3 gap-6 mb-10 lg:mb-14">
+    <!-- Card -->
+    {
+      news.map((item) => (
+        <a
+          class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800"
+          href="#"
+        >
+          <div class="aspect-w-16 aspect-h-9">
+            <img
+              class="w-fullobject-cover rounded-t-xl h-64"
+              src={`assets/images/${item.banner}`}
+              alt="Image Description"
+            />
+          </div>
+          <div class="p-4 md:p-5">
+            <p class="mt-2 text-lg font-semibold uppercase text-gray-600 h-[80px] group-hover:text-orange-500">
+              {item.title}
+            </p>
+            <h3 class="mt-2 text-sm font-medium text-gray-800 h-[80px]">
+              {item.description}
+            </h3>
+            <button class="mt-4 px-4 py-2 bg-orange-500 text-white rounded-md">Read More</button>
+          </div>
+        </a>
+      ))
+    }
+
+    <!-- End Card -->
+  </div>
+  <!-- End Grid -->
+</div>
+<!-- End Card Blog -->
